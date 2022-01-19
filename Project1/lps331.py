@@ -11,7 +11,7 @@ class lps331:
         self.bus = smbus.SMBus(self.i2c_port_number)
         self.address = self.find_sensor()
         if (self.address == 0):
-            print("Error: could not read from sensor at i2c address 0x5d")
+            print("Error: could not read from sensor at i2c address 0x5d or 0x5c")
             sys.exit()
         self.enable_sensor()
         
@@ -19,9 +19,13 @@ class lps331:
         ''' read the whoami byte from i2c address 0x5d and confirm to be 0xbb '''
         # Return the address if found (0x5d) and 0 if not found
         
-        # @@@@ Your Code Here @@@@ 
-        
-        return(0);   # if the sensor was not located on either bus, return -1
+        whoami_reg = 0x0f
+        if self.bus.read_byte_data(0x5d, whoami_reg) == 0xbb:
+            return 0x5d
+        elif self.bus.read_byte_data(0x5c, whoami_reg) == 0xbb:
+            return 0x5c
+        else:
+            return 0
 
    def i2c_address(self):
         return(self.address)
@@ -52,14 +56,20 @@ class lps331:
     def enable_sensor(self):
         ''' Turn on sensor in control register 1'''
 
-        # @@@@ Your Code Here @@@@ 
+        # first read the data, then 'or' it with 0b10000000 to keep the rest of the data intact
+        CTRL_REG_1_ADDR = 0x20
+        ctrl_reg_1_data = self.bus.read_byte_data(self.address, CTRL_REG_1_ADDR)
+        self.bus.write_byte_data(self.address, CTRL_REG_1_ADDR, 0x80 | ctrl_reg_1_data)
      
         pass
     
     def disable_sensor(self):
       ''' Turn off sensor in control register 1 '''
 
-        # @@@@ Your Code Here @@@@ 
+        # first read the data, then 'and' it with 0b01111111 to keep the rest of the data intact
+        CTRL_REG_1_ADDR = 0x20
+        ctrl_reg_1_data = self.bus.read_byte_data(self.address, CTRL_REG_1_ADDR)
+        self.bus.write_byte_data(self.address, CTRL_REG_1_ADDR, 0x7F & ctrl_reg_1_data)
 
         pass
         
