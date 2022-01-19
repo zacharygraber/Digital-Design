@@ -2,6 +2,7 @@
 
 import smbus
 import sys
+import numpy as np
 
 class lps331:
     ''' allows connection from Raspberry pi to I2C connected lps331 '''
@@ -27,7 +28,7 @@ class lps331:
         else:
             return 0
 
-   def i2c_address(self):
+    def i2c_address(self):
         return(self.address)
 
     def sample_once(self):
@@ -44,10 +45,23 @@ class lps331:
         pass
         
     def read_temperature(self):
-        ''' Sample, read temperature registers, and convert to inhg ''' 
+        ''' Sample, read temperature registers, and convert to degrees C ''' 
         tempC = 0
 
-        # @@@@ Your Code Here @@@@ 
+        self.sample_once()
+        temp_l = self.bus.read_byte_data(self.address, 0x2b)
+        temp_h = self.bus.read_byte_data(self.address, 0x2c)
+        tempC = tempC | temp_h
+        tempC = tempC << 8
+        tempC = tempC | temp_l
+
+        # Convert from 2s complement to decimal
+        tempC = np.int32(tempC)
+
+
+        # Do scaling to get degC
+        tempC /= 480
+        tempC += 42.5
         
         return(tempC)
 
@@ -55,9 +69,22 @@ class lps331:
         ''' Sample, read pressure registers, and convert to inhg ''' 
         press_inhg = 0
         
-        # @@@@ Your Code Here @@@@ 
+        self.sample_once()
+        press_xl = self.bus.read_byte_data(self.address,0x28)
+        press_l = self.bus.read_byte_data(self.address,0x29)
+        press_h= self.bus.read_byte_data(self.address,0x2a)
+
+        press_inhg = press_inhg | press_h
+        press_inhg = press_inhg << 8
+        press_inhg = press_inhg | press_l
+        press_inhg = press_inhg << 8
+        press_inhg = press_inhg | press_xl
+
+        # Convert to decimal
+        press_inhg = press_inhg - (1 << 24)
+
         
-        return(press_inhg)
+        return(press_inhg / 4096)
     
     def enable_sensor(self):
         ''' Turn on sensor in control register 1'''
@@ -70,7 +97,7 @@ class lps331:
         pass
     
     def disable_sensor(self):
-      ''' Turn off sensor in control register 1 '''
+        ''' Turn off sensor in control register 1 '''
 
         # first read the data, then 'and' it with 0b01111111 to keep the rest of the data intact
         CTRL_REG_1_ADDR = 0x20
@@ -81,8 +108,8 @@ class lps331:
         
     def close(self):
         ''' Disable the sensor and close connection to i2c port '''
-       self.disable_sensor()
-       self.bus.close()
+        self.disable_sensor()
+        self.bus.close()
        
 if  __name__ == "__main__":
     sensor = lps331(1)
