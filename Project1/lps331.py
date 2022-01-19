@@ -33,7 +33,13 @@ class lps331:
     def sample_once(self):
         ''' Cause the sensor to sample one time '''
         
-        # @@@@ Your Code Here @@@@ 
+        CTRL_REG_2_ADDR = 0x21
+        ctrl_reg_2_data = self.bus.read_byte_data(self.address, CTRL_REG_2_ADDR)
+        self.bus.write_byte_data(self.address, CTRL_REG_2_ADDR, ctrl_reg_2_data | 0x01)
+
+        # Keep waiting until the bit in the ctrl register has been reset to 0
+        while ctrl_reg_2_data & 0x01:
+            ctrl_reg_2_data = self.bus.read_byte_data(self.address, CTRL_REG_2_ADDR)
         
         pass
         
