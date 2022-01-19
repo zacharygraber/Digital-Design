@@ -56,7 +56,7 @@ class lps331:
         tempC = tempC | temp_l
 
         # Convert from 2s complement to decimal
-        tempC = np.int32(tempC)
+        tempC = np.int16(tempC)
 
 
         # Do scaling to get degC
@@ -81,10 +81,17 @@ class lps331:
         press_inhg = press_inhg | press_xl
 
         # Convert to decimal
-        press_inhg = press_inhg - (1 << 24)
+        press_inhg = np.int32(press_inhg)
+        press_inhg = press_inhg << 8
+        press_inhg /= 2**(8)
 
+        # DO scaling required by sensor
+        press_inhg /= 4096
+
+        # Convert to in Hg
+        press_inhg /= 33.864
         
-        return(press_inhg / 4096)
+        return(press_inhg)
     
     def enable_sensor(self):
         ''' Turn on sensor in control register 1'''
