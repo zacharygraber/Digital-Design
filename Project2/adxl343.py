@@ -35,13 +35,13 @@ class adxl343:
     def enable(self):
         """ Set the measure bit in the POWER_CTL Register to enable sensor """
         POWER_CTL_REG = 0x2D
-        power_ctl_data = read_register(POWER_CTL_REG)
-        write_register(POWER_CTL_REG, 0x8 | power_ctl_data)
+        power_ctl_data = self.read_register(POWER_CTL_REG)
+        self.write_register(POWER_CTL_REG, 0x8 | power_ctl_data)
 
         # Set the range to +/-2 g
         DATA_FORMAT_REG = 0x31
-        data_format_reg_data = read_register(DATA_FORMAT_REG)
-        write_register(DATA_FORMAT_REG, data_format_reg_data & 0xFC)
+        data_format_reg_data = self.read_register(DATA_FORMAT_REG)
+        self.write_register(DATA_FORMAT_REG, data_format_reg_data & 0xFC)
 
         pass
     
@@ -49,21 +49,46 @@ class adxl343:
         """ Read the DEVID register to get back the value of the register"""
         """ Function should return a string that is the output of running the hex function on returned byte"""
         data = 0
-        data = data | read_register(0x0)
+        data = data | self.read_register(0x0)
         return hex(data)
 
     def read_x_axis(self):
         """ Read the two bytes for the axis, return a floating point g value on a +/-2g scale. """
+        x0 = self.read_register(0x32)
+        x1 = self.read_register(0x33)
+
+        data = np.int16(0)
+        data = data | x1
+        data = data << 8
+        data = data | x0
+
+        return(data)
         
-        pass
-        
-     def read_y_axis(self):
+    def read_y_axis(self):
         """ Read the two bytes for the axis, return a floating point g value on a +/-2g scale. """
-        pass
+        y0 = self.read_register(0x34)
+        y1 = self.read_register(0x35)
+
+        data = np.int16(0)
+        data = data | y1
+        data = data << 8
+        data = data | y0
+
+        return(data)
+
 
     def read_z_axis(self):
         """ Read the two bytes for the axis, return a floating point g value on a +/-2g scale. """
-        pass
+        z0 = self.read_register(0x36)
+        z1 = self.read_register(0x37)
+
+        data = np.int16(0)
+        data = data | z1
+        data = data << 8
+        data = data | z0
+
+        return(data)
+
     
 if  __name__ == "__main__":
     sensor = adxl343()
