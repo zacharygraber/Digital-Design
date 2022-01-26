@@ -108,5 +108,6 @@ if  __name__ == "__main__":
     sensor = adxl343()
     #print(hex(sensor.read_register(0x31)))
     while 1:
-        print(sensor.read_x_axis(), sensor.read_y_axis(), sensor.read_z_axis())
+        time.sleep(0.5)
+        print("{:.2f}".format(sensor.read_x_axis()), "{:.2f}".format(sensor.read_y_axis()), "{:.2f}".format(sensor.read_z_axis()))
 
