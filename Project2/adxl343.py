@@ -57,12 +57,16 @@ class adxl343:
         x0 = self.read_register(0x32)
         x1 = self.read_register(0x33)
 
-        data = np.int16(0)
+        data = 0
         data = data | x1
         data = data << 8
         data = data | x0
 
-        return(data)
+        data = data << 6
+        data = np.int16(data)
+        data /= 2**(6)
+
+        return(data / 256.0)
         
     def read_y_axis(self):
         """ Read the two bytes for the axis, return a floating point g value on a +/-2g scale. """
@@ -74,7 +78,12 @@ class adxl343:
         data = data << 8
         data = data | y0
 
-        return(data)
+        data = data << 6
+        data = np.int16(data)
+        data /= 2**(6)
+
+        return(data / 256.0)
+
 
 
     def read_z_axis(self):
@@ -87,11 +96,17 @@ class adxl343:
         data = data << 8
         data = data | z0
 
-        return(data)
+        data = data << 6
+        data = np.int16(data)
+        data /= 2**(6)
+
+        return(data / 256.0)
+
 
     
 if  __name__ == "__main__":
     sensor = adxl343()
+    #print(hex(sensor.read_register(0x31)))
     while 1:
         print(sensor.read_x_axis(), sensor.read_y_axis(), sensor.read_z_axis())
 
