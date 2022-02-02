@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 
 import paho.mqtt.client as mqtt
-#import adxl343
+import adxl343
+import lps331
 import time
 
 # White Bar Code Label Number on Each Raspberry Pi
 sensor_id = 999491
-temperature = 21
-pressure = 31
-x_acceleration = 0.001
-y_acceleration = 0.002
-z_acceleration = 1.001
+lps_sens = lps331.lps331(1)
+adxl_sens = adxl343.adxl343()
+temperature = -99
+pressure = -99
+x_acceleration = -99
+y_acceleration = -99
+z_acceleration = -99
 
 def on_message(client, userdata, message):
     print("topic:", message.topic)
@@ -25,6 +28,13 @@ client.on_connect=on_connect
 client.connect("pivot.iuiot.org")
 client.loop_start()
 while(1):
+    temperature = lps_sens.read_temperature()
+    pressure = lps_sens.read_pressure()
+    x_acceleration = adxl_sens.read_x_axis()
+    y_acceleration = adxl_sens.read_y_axis()
+    z_acceleration = adxl_sens.read_z_axis()
+
+
     print("Publish Temperature, Pressure, and Accelerometer Data")
     client.publish(f"sensors/{sensor_id}/temperature",f"{temperature}")
     client.publish(f"sensors/{sensor_id}/pressure",f"{pressure}")
