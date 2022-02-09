@@ -4,11 +4,13 @@ import paho.mqtt.client as mqtt
 import adxl343
 import lps331
 import time
+import led_driver
 
 # White Bar Code Label Number on Each Raspberry Pi
 sensor_id = 999491
 lps_sens = lps331.lps331(1)
 adxl_sens = adxl343.adxl343()
+led = led_driver.Led_Driver(18)
 temperature = -99
 pressure = -99
 x_acceleration = -99
@@ -17,9 +19,17 @@ z_acceleration = -99
 
 def on_message(client, userdata, message):
     print("topic:", message.topic)
-    print("message:", message.payload.decode('UTF-8'))
+    message_str = message.payload.decode('UTF-8')
+    print("message:", message_str)
+
+    if message.topic == f"sensors/{sensor_id}/led/duty":
+        led.on(duty=float(message_str))
+    elif message.topic == f"sensors/{sensor_id}/led/frequency":
+        led.change_frequency(float(message_str))
 
 def on_connect(client,userdata,flags,rc):
+    topics = [(f"sensors/{sensor_id}/led/duty",0),(f"sensors/{sensor_id}/led/frequency",0)]
+    client.subscribe(topics)
     pass
     
 client = mqtt.Client()
@@ -41,4 +51,5 @@ while(1):
     client.publish(f"sensors/{sensor_id}/accel/x",f"{x_acceleration}")
     client.publish(f"sensors/{sensor_id}/accel/y",f"{y_acceleration}")
     client.publish(f"sensors/{sensor_id}/accel/z",f"{z_acceleration}")
+    client.publish(f"sensors/{sensor_id}/led/status",f"duty:{led.duty},frequency:{led.frequency}")
     time.sleep(5)
