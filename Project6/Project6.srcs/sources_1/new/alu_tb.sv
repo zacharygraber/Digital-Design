@@ -55,8 +55,34 @@ module alu_tb;
     
         $monitor("%b %b %b", r, c, v);
         
-        // Syntax for the test: (a, b, s,  expected r, expected c, expected v)
+        // Syntax for the test: (operand1,operand2,4-bit op-code, expected result, exp carry, exp oVerflow)
+        
+        // AND tests
         alutask(8'b10010101,8'b00110101, 4'b1110, 8'b00010101, 1'b0,1'b0);
+        alutask(8'b00000000,8'b01010101, 4'b1110, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b11111111,8'b10000001, 4'b1110, 8'b10000001, 1'b0,1'b0);
+        
+        // OR tests
+        alutask(8'b00000000,8'b00000000, 4'b1101, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b11111111,8'b00000000, 4'b1101, 8'b11111111, 1'b0,1'b0);
+        alutask(8'b10010101,8'b11001001, 4'b1101, 8'b11011101, 1'b0,1'b0);
+        
+        // NOT tests
+        alutask(8'b00000000,8'b00000000, 4'b1100, 8'b11111111, 1'b0,1'b0);
+        alutask(8'b00000000,8'b11111111, 4'b1100, 8'b11111111, 1'b0,1'b0);
+        alutask(8'b11111111,8'b00000000, 4'b1100, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b11111111,8'b11111111, 4'b1100, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b10010101,8'b00000000, 4'b1100, 8'b01101010, 1'b0,1'b0);
+        
+        // XOR tests
+        alutask(8'b00000000,8'b00000000, 4'b1011, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b11111111,8'b11111111, 4'b1011, 8'b00000000, 1'b0,1'b0);
+        alutask(8'b11111111,8'b00000000, 4'b1011, 8'b11111111, 1'b0,1'b0);
+        alutask(8'b01011010,8'b10010100, 4'b1011, 8'b11001110, 1'b0,1'b0);
+        
+        // Addition tests!
+        alutask(8'b00000001,8'b00000001, 4'b1010, 8'b00000010, 1'b0,1'b0); // 1+1 = 2 -> no carry or overflow
+        alutask(8'b00001111,8'b00000011, 4'b1010, 8'b00010010, 1'b0,1'b0); // 15+3 = 18 -> no carry or overflow
         
         $display("@@@Passed");
     end
