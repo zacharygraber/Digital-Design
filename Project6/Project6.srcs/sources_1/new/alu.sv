@@ -60,7 +60,7 @@ module alu(
                         v = ~a[7] & ~b[7] & r[7] | a[7] & b[7] & ~r[7];
                         end
            4'b1001: begin   //subtraction case
-                        {c,r} = a9-b9;
+                        {c,r} = a9+(~b9)+1;
                         v = (a[7]&~b[7]&~r[7])|(~a[7]&b[7]&r[7]);
                         end
            4'b1000: begin  //transfer case

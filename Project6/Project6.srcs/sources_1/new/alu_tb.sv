@@ -52,7 +52,7 @@ module alu_tb;
     
     initial
     begin
-    
+    	a=0; b=0; s=1;
         $monitor("%b %b %b", r, c, v);
         
         // Syntax for the test: (operand1,operand2,4-bit op-code, expected result, exp carry, exp oVerflow)
@@ -83,6 +83,16 @@ module alu_tb;
         // Addition tests!
         alutask(8'b00000001,8'b00000001, 4'b1010, 8'b00000010, 1'b0,1'b0); // 1+1 = 2 -> no carry or overflow
         alutask(8'b00001111,8'b00000011, 4'b1010, 8'b00010010, 1'b0,1'b0); // 15+3 = 18 -> no carry or overflow
+        
+        //Subtraction tests
+        alutask(8'b10000001,8'b10000001, 4'b1001, 8'b00000000, 1'b0,1'b0);
+        
+        //Transfer tests
+        alutask(8'b00000111,8'b00000000, 4'b1000, 8'b00000111, 1'b0, 1'b0);
+        
+        //Test tests!
+        alutask(8'b00000000,8'b00000000, 4'b0111, 8'b00000001, 1'b0, 1'b0);
+        alutask(8'b11111111,8'b00000000, 4'b0111, 8'b00000000, 1'b0, 1'b0);
         
         $display("@@@Passed");
     end
