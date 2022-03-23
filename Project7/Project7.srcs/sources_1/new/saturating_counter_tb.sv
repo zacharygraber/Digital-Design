@@ -36,7 +36,7 @@ module testbench;
     );
 
 
-    task test_logic( input countT);
+    task test_logic( input logic [1:0] countT);
         #1 //let input changes settle
         assert( count == countT) else $fatal(1,"Bad count: expected %b, got %b", countT, count);
     endtask
@@ -64,70 +64,71 @@ module testbench;
         rst = 0;
         enable = 1;
         up_down = 1;
-        test_logic (2'b01); //mealy-type test
         @(negedge clk);
+        test_logic (2'b01);
+        
 
         $display(" transition back to ZERO");
         up_down = 0;
-        test_logic (2'b00); //mealy-type test
         @(negedge clk);
+        test_logic (2'b00);
 
         $display(" stay at ZERO");
         up_down = 0;
-        test_logic (2'b00); //mealy-type test
         @(negedge clk);
+        test_logic (2'b00);
 
         $display(" transition to ONE");
         up_down = 1;
-        test_logic (2'b01); //mealy-type test
         @(negedge clk);
+        test_logic (2'b01); //mealy-type test
         
         $display(" transition to TWO");
         up_down = 1;
-        test_logic (2'b10); //mealy-type test
         @(negedge clk);
+        test_logic (2'b10); //mealy-type test
 
         $display(" transition to THREE");
         up_down = 1;
-        test_logic (2'b11); //mealy-type test
         @(negedge clk);
+        test_logic (2'b11); //mealy-type test
         
         $display(" stay at THREE");
         up_down = 1;
-        test_logic (2'b11); //mealy-type test
         @(negedge clk);
+        test_logic (2'b11); //mealy-type test
         
         $display(" transition to TWO");
         up_down = 0;
-        test_logic (2'b10); //mealy-type test
         @(negedge clk);
+        test_logic (2'b10); //mealy-type test
 
         $display(" stay at TWO (disabled)");
         up_down = 1;
         enable = 0;
-        test_logic (2'b10); //mealy-type test
         @(negedge clk);
+        test_logic (2'b10); //mealy-type test
         
         $display(" transition to THREE (re-enable)");
         enable = 1;
-        test_logic (2'b11); //mealy-type test
         @(negedge clk);
+        test_logic (2'b11); //mealy-type test
 
         $display(" test RESET (transition to ZERO)");
         up_down = 0;
         rst = 1;
-        test_logic (2'b00); //mealy-type test
         @(negedge clk);
+        test_logic (2'b00); //mealy-type test
         
         $display(" stay at ZERO (reset enabled)");
         up_down = 1;
-        test_logic (2'b00); //mealy-type test
         @(negedge clk);
+        test_logic (2'b00); //mealy-type test
         
         $display(" transition to ONE");
         rst = 0;
-        test_logic (2'b01); //mealy-type test
         @(negedge clk);
+        test_logic (2'b01); //mealy-type test
 
         $display("@@@Passed\n");
         $finish;
