@@ -3,5 +3,8 @@
 Nov 18 2020
 09:20:35
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
-/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay.sv,1648675532,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay_tb.sv,,SevSegDisplay,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl.sv,1648679794,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SlowClk.sv,,ElevCtrl,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,1648676457,systemVerilog,,,,ElevCtrl_tb,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay.sv,1648677203,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay_tb.sv,,SevSegDisplay,,uvm,,,,,,
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay_tb.sv,1648675432,systemVerilog,,,,SevSegDisplay_tb,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SlowClk.sv,1648678564,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,,SlowClk,,uvm,,,,,,

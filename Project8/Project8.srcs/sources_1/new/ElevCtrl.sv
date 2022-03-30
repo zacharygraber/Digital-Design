@@ -34,27 +34,27 @@ module ElevCtrl(
     
     always_ff @(posedge clk) begin
         //reset is the only if() case we suggest in always_ff
-        target_floor <= target_floor;
         if (rst) begin
             state <= ONE_IDLE;  //add a reset case
-            target_floor <= 2'b00;
+            target_floor = 2'b00;
         end
         else
             state <= nextState;
-    end
-    
-    always_comb begin
-        // Defaults
-        floorSel = 2'b00;
-        door = 1'b1;
         
-        if ((floorBtn != 4'b0000) && (door == 1))
+        if ((floorBtn != 4'b0000) && (door == 1)) begin
             case(floorBtn)
                 4'b0001: target_floor = 2'b00;
                 4'b0010: target_floor = 2'b01;
                 4'b0100: target_floor = 2'b10;
                 4'b1000: target_floor = 2'b11;
             endcase
+        end
+    end
+    
+    always_comb begin
+        // Defaults
+        floorSel = 2'b00;
+        door = 1'b1;
         
         case(state)
             ONE_IDLE: begin

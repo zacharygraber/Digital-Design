@@ -53,8 +53,8 @@ module ElevCtrl_tb;
         rst = 1;
         floorBtn =4'b0000;
         
-        $monitor ("floorSel:%b door:%b segments:%b select:%b",
-                floorSel, door, segments, select);
+        $monitor ("clk:%b floorBtn:%b rst:%b door:%b floorSel:%b",
+                slowClk, floorBtn, rst, door, floorSel);
                 
         // wait a few clock cycles
         // and then clear reset

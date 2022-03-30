@@ -30,7 +30,7 @@ module SlowClk(
     always_ff @(posedge clk) 
         q <= q + 25'h1;
 
-    assign slowClk = q[25]; //use q[4] for simulations
+    assign slowClk = q[25]; //use q[4] for simulations, 25
 
 endmodule
 

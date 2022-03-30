@@ -1,0 +1,4 @@
+Running: xsim.dir/ElevCtrl_tb_behav/xsimk -simmode gui -wdb ElevCtrl_tb_behav.wdb -simrunnum 0 -socket 58793
+Design successfully loaded
+Design Loading Memory Usage: 33600 KB (Peak: 33720 KB)
+Design Loading CPU Usage: 30 ms
