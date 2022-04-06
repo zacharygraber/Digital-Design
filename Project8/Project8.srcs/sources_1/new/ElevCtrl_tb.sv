@@ -1,38 +1,14 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/30/2022 05:09:37 PM
-// Design Name: 
-// Module Name: SevSegDisplay_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module ElevCtrl_tb;
     logic door;
     logic [1:0] floorSel;
-    logic slowClk, clk, rst;
+    logic clk, rst;
     logic [3:0] floorBtn;
     
-    SlowClk slow_clk(
-        .clk,
-        .slowClk
-    );
     
     ElevCtrl elev(
-        .clk(slowClk),
+        .clk,
         .rst,
         .floorBtn,
         .floorSel, // output
@@ -48,39 +24,134 @@ module ElevCtrl_tb;
         assert(door == doorT) else $fatal(1,"Bad door: expected %b, got %b", doorT, door);
     endtask
     
+    always begin
+        #5 clk = ~clk;
+    end
+    
     initial begin
-        slowClk = 0;
+        clk = 0;
         rst = 1;
-        floorBtn =4'b0000;
+        floorBtn = 4'b0000;
         
         $monitor ("clk:%b floorBtn:%b rst:%b door:%b floorSel:%b",
-                slowClk, floorBtn, rst, door, floorSel);
+                clk, floorBtn, rst, door, floorSel);
                 
-        // wait a few clock cycles
-        // and then clear reset
+//         wait a few clock cycles
+//         and then clear reset
         for (int i = 0; i < 8; ++i) 
-         @(negedge slowClk);
-         
-        // Door open: 7'b1000011
-        // Door closed: 7'b0100011
+         @(negedge clk);
+  
+        rst = 0;
         
         $display("  floor one, door open");
-        rst = 0;
         @(negedge clk);
         test_logic(2'b00, 1'b1);
         
-        $display("  press floor 3 button");
-        floorBtn = 4'b0100;
-        @(negedge clk);
-        floorBtn = 4'b0000;
+        $display("  press floor 2 button");
+        floorBtn = 4'b0010;
         @(negedge clk);
         test_logic(2'b00, 1'b0);
         @(negedge clk);
+        floorBtn = 4'b0000;;
+        test_logic(2'b01, 1'b0);
+        @(negedge clk);
+        test_logic(2'b01, 1'b1);
+        @(negedge clk);
+        
+        $display("  floor 2 to floor 3");
+        floorBtn = 4'b0100;
+        test_logic(2'b01, 1'b1);
+        @(negedge clk);
+        floorBtn = 4'b0000;
         test_logic(2'b01, 1'b0);
         @(negedge clk);
         test_logic(2'b10, 1'b0);
         @(negedge clk);
         test_logic(2'b10, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 4 button");
+        floorBtn = 4'b1000;
+        @(negedge clk);
+        floorBtn = 4'b0000;
+        test_logic(2'b10, 1'b0);
+        @(negedge clk);
+        test_logic(2'b11, 1'b0);
+        @(negedge clk);
+        test_logic(2'b11, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 4 button (already at 4)");
+        floorBtn = 4'b1000;
+        @(negedge clk);
+        test_logic(2'b11, 1'b1);
+        @(negedge clk);
+        test_logic(2'b11, 1'b1);
+        @(negedge clk);
+        test_logic(2'b11, 1'b1);
+        floorBtn = 4'b0000;
+        @(negedge clk);
+        test_logic(2'b11, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 3 button");
+        floorBtn = 4'b0100;
+        @(negedge clk);
+        floorBtn = 4'b0000;
+        test_logic(2'b11, 1'b0);
+        @(negedge clk);
+        test_logic(2'b10, 1'b0);
+        @(negedge clk);
+        test_logic(2'b10, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 2 button");
+        floorBtn = 4'b0010;
+        @(negedge clk);
+        floorBtn = 4'b0000;
+        test_logic(2'b10, 1'b0);
+        @(negedge clk);
+        test_logic(2'b01, 1'b0);
+        @(negedge clk);
+        test_logic(2'b01, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 1 button");
+        floorBtn = 4'b0001;
+        @(negedge clk);
+        floorBtn = 4'b0000;
+        test_logic(2'b01, 1'b0);
+        @(negedge clk);
+        test_logic(2'b00, 1'b0);
+        @(negedge clk);
+        test_logic(2'b00, 1'b1);
+        @(negedge clk);
+        
+        $display("  press floor 3 button");
+        floorBtn = 4'b0100;
+        @(negedge clk);
+        test_logic(2'b00, 1'b0);
+        @(negedge clk);
+        floorBtn = 4'b0000;;
+        test_logic(2'b01, 1'b0);
+        @(negedge clk);
+        test_logic(2'b10, 1'b0);
+        @(negedge clk);
+        test_logic(2'b10, 1'b1);
+        @(negedge clk);
+        test_logic(2'b10, 1'b1);
+        @(negedge clk);
+        
+        $display("  press reset");
+        rst = 1'b1;
+        @(negedge clk);
+        rst = 1'b0;
+        test_logic(2'b00, 1'b1);
+        @(negedge clk);
+        test_logic(2'b00, 1'b1);
+        @(negedge clk);
+        test_logic(2'b00, 1'b1);
+        @(negedge clk);
         
         $display("@@@Passed\n");
         $finish;

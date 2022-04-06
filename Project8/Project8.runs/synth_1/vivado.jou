@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Wed Mar 30 18:43:25 2022
-# Process ID: 202935
+# Start of session at: Wed Apr  6 18:51:26 2022
+# Process ID: 96938
 # Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.runs/synth_1
 # Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.runs/synth_1/top.vds

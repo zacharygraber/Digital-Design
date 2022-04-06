@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/30/2022 04:24:52 PM
-// Design Name: 
-// Module Name: ElevCtrl
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module ElevCtrl(
     input        clk, //clock
@@ -29,107 +9,110 @@ module ElevCtrl(
     output logic       door
 );
 
-    enum {ONE_IDLE, ONE_MOVE, TWO_IDLE, TWO_MOVE, THREE_IDLE, THREE_MOVE, FOUR_IDLE, FOUR_MOVE } state, nextState;
-    logic [1:0] target_floor = 2'b00;
+    enum {ONE, TWO, THREE, FOUR, ONE_MOVE, TWO_MOVE, THREE_MOVE, FOUR_MOVE} state, nextState, target;
+    
+    always_latch begin
+        if ((state == ONE) || (state == TWO) || (state == THREE) || (state == FOUR)) begin
+            case(floorBtn)
+                4'b1000: target = FOUR;
+                4'b0100: target = THREE;
+                4'b0010: target = TWO;
+                4'b0001: target = ONE;
+                4'b0000: target = target;
+                default: target = ONE;
+            endcase
+        end
+        if (rst == 1'b1) begin
+            target = ONE;
+        end
+    end
     
     always_ff @(posedge clk) begin
         //reset is the only if() case we suggest in always_ff
         if (rst) begin
-            state <= ONE_IDLE;  //add a reset case
-            target_floor = 2'b00;
+            state <= ONE;  //add a reset case
         end
-        else
+        else begin
             state <= nextState;
-        
-        if ((floorBtn != 4'b0000) && (door == 1)) begin
-            case(floorBtn)
-                4'b0001: target_floor = 2'b00;
-                4'b0010: target_floor = 2'b01;
-                4'b0100: target_floor = 2'b10;
-                4'b1000: target_floor = 2'b11;
-            endcase
         end
     end
     
     always_comb begin
         // Defaults
         floorSel = 2'b00;
+        nextState = ONE;
         door = 1'b1;
         
         case(state)
-            ONE_IDLE: begin
+            ONE: begin
                 // Determine next state
-                if (target_floor != 2'b00) begin
+                if (target != ONE) begin
                     nextState = ONE_MOVE;
                 end
-                else
-                    nextState = ONE_IDLE;
+                else begin
+                    nextState = ONE;
+                end
                 
                 // Set outputs
+                door = 1'b1;
                 floorSel = 2'b00;
-                door = 1'b1;
             end
-            TWO_IDLE: begin
-                if (target_floor != 2'b01)
+            TWO: begin
+                if (target != TWO) begin
                     nextState = TWO_MOVE;
-                else
-                    nextState = TWO_IDLE;
+                end
+                else begin
+                    nextState = TWO;
+                end
+                door = 1'b1;
                 floorSel = 2'b01;
-                door = 1'b1;
             end
-            THREE_IDLE: begin
-                if (target_floor != 2'b10)
+            THREE: begin
+                if (target != THREE) begin
                     nextState = THREE_MOVE;
-                else
-                    nextState = THREE_IDLE;
+                end
+                else begin
+                    nextState = THREE;
+                end
+                door = 1'b1;
                 floorSel = 2'b10;
-                door = 1'b1;
             end
-            FOUR_IDLE: begin
-                if (target_floor != 2'b11)
+            FOUR: begin
+                if (target != FOUR) begin
                     nextState = FOUR_MOVE;
-                else
-                    nextState = FOUR_IDLE;
-                floorSel = 2'b11;
+                end
+                else nextState = FOUR;
                 door = 1'b1;
+                floorSel = 2'b11;
             end
             ONE_MOVE: begin
-                if (target_floor != 2'b00)
-                    nextState = TWO_MOVE;
-                else
-                    nextState = ONE_IDLE;
-                floorSel = 2'b00;
+                if (target == ONE) nextState = ONE;
+                else nextState = TWO_MOVE;
                 door = 1'b0;
+                floorSel = 2'b00;
             end
             TWO_MOVE: begin
-                if (target_floor == 2'b01)
-                    nextState = TWO_IDLE;
-                else if (target_floor < 2'b01)
-                    nextState = ONE_MOVE;
-                else
-                    nextState = THREE_MOVE;
-                floorSel = 2'b01;
+                if (target == TWO) nextState = TWO;
+                else if ((target == THREE) || (target == FOUR)) nextState = THREE_MOVE;
+                else nextState = ONE_MOVE;
                 door = 1'b0;
+                floorSel = 2'b01;
             end
             THREE_MOVE: begin
-                if (target_floor == 2'b10)
-                    nextState = THREE_IDLE;
-                else if (target_floor < 2'b10)
-                    nextState = TWO_MOVE;
-                else
-                    nextState = FOUR_MOVE;
-                floorSel = 2'b10;
+                if (target == THREE) nextState = THREE;
+                else if ((target == ONE) || (target == TWO)) nextState = TWO_MOVE;
+                else nextState = FOUR_MOVE;
                 door = 1'b0;
+                floorSel = 2'b10;
             end
             FOUR_MOVE: begin
-                if (target_floor == 2'b11)
-                    nextState = FOUR_IDLE;
-                else
-                    nextState = THREE_MOVE;
-                floorSel = 2'b11;
+                if (target == FOUR) nextState = FOUR;
+                else nextState = THREE_MOVE;
                 door = 1'b0;
+                floorSel = 2'b11;
             end
             default: begin
+                nextState = ONE;
                 floorSel = 2'b00;
                 door = 1'b1;
             end

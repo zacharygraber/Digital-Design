@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date             : Wed Mar 30 18:44:59 2022
+| Date             : Wed Apr  6 18:53:19 2022
 | Host             : if4111linux-20 running 64-bit Ubuntu 20.04.4 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.065        |
+| Total On-Chip Power (W)  | 0.066        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.004        |
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |       60 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       12 |     20800 |            0.06 |
+| Slice Logic    |    <0.001 |       70 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       17 |     20800 |            0.08 |
 |   CARRY4       |    <0.001 |        7 |      8150 |            0.09 |
-|   Register     |    <0.001 |       31 |     41600 |            0.07 |
+|   Register     |    <0.001 |       36 |     41600 |            0.09 |
 |   Others       |     0.000 |        6 |       --- |             --- |
-| Signals        |    <0.001 |       53 |       --- |             --- |
-| I/O            |     0.003 |       33 |       106 |           31.13 |
+| Signals        |    <0.001 |       57 |       --- |             --- |
+| I/O            |     0.004 |       33 |       106 |           31.13 |
 | Static Power   |     0.062 |          |           |                 |
-| Total          |     0.065 |          |           |                 |
+| Total          |     0.066 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -94,7 +94,7 @@ Table of Contents
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification  | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
 | I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
 | Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
 | Device models               | High       | Device models are Production                           |                                                                                                                    |

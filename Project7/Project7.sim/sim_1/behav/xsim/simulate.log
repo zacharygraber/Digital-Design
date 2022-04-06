@@ -1,0 +1,69 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+clk:0 rst:1 enable:0 up_down:0 count:00
+clk:1 rst:1 enable:0 up_down:0 count:00
+ transition to ONE
+clk:0 rst:0 enable:1 up_down:1 count:00
+clk:1 rst:0 enable:1 up_down:1 count:01
+clk:0 rst:0 enable:1 up_down:1 count:01
+ transition back to ZERO
+clk:0 rst:0 enable:1 up_down:0 count:01
+clk:1 rst:0 enable:1 up_down:0 count:00
+clk:0 rst:0 enable:1 up_down:0 count:00
+ stay at ZERO
+clk:1 rst:0 enable:1 up_down:0 count:00
+clk:0 rst:0 enable:1 up_down:0 count:00
+ transition to ONE
+clk:0 rst:0 enable:1 up_down:1 count:00
+clk:1 rst:0 enable:1 up_down:1 count:01
+clk:0 rst:0 enable:1 up_down:1 count:01
+ transition to TWO
+clk:1 rst:0 enable:1 up_down:1 count:10
+clk:0 rst:0 enable:1 up_down:1 count:10
+ transition to THREE
+clk:1 rst:0 enable:1 up_down:1 count:11
+clk:0 rst:0 enable:1 up_down:1 count:11
+ stay at THREE
+clk:1 rst:0 enable:1 up_down:1 count:11
+clk:0 rst:0 enable:1 up_down:1 count:11
+ transition to TWO
+clk:0 rst:0 enable:1 up_down:0 count:11
+clk:1 rst:0 enable:1 up_down:0 count:10
+clk:0 rst:0 enable:1 up_down:0 count:10
+ stay at TWO (disabled)
+clk:0 rst:0 enable:0 up_down:1 count:10
+clk:1 rst:0 enable:0 up_down:1 count:10
+clk:0 rst:0 enable:0 up_down:1 count:10
+ transition to THREE (re-enable)
+clk:0 rst:0 enable:1 up_down:1 count:10
+clk:1 rst:0 enable:1 up_down:1 count:11
+clk:0 rst:0 enable:1 up_down:1 count:11
+ test RESET (transition to ZERO)
+clk:0 rst:1 enable:1 up_down:0 count:11
+clk:1 rst:1 enable:1 up_down:0 count:00
+clk:0 rst:1 enable:1 up_down:0 count:00
+ stay at ZERO (reset enabled)
+clk:0 rst:1 enable:1 up_down:1 count:00
+clk:1 rst:1 enable:1 up_down:1 count:00
+clk:0 rst:1 enable:1 up_down:1 count:00
+ transition to ONE
+clk:0 rst:0 enable:1 up_down:1 count:00
+clk:1 rst:0 enable:1 up_down:1 count:01
+clk:0 rst:0 enable:1 up_down:1 count:01
+@@@Passed
+
+$finish called at time : 211 ns : File "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project7/Project7.srcs/sources_1/new/saturating_counter_tb.sv" Line 134
