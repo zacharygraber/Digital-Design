@@ -18,8 +18,6 @@ module ElevCtrl(
                 4'b0100: target = THREE;
                 4'b0010: target = TWO;
                 4'b0001: target = ONE;
-                4'b0000: target = target;
-                default: target = ONE;
             endcase
         end
         if (rst == 1'b1) begin
