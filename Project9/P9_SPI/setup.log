@@ -1,0 +1,31 @@
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source tcl/setup.tcl
+# set MYFILE [file normalize [info script]]
+# set MYDIR  [file dirname ${MYFILE}]
+# set BASEDIR ${MYDIR}/../
+# set SRCDIR ${MYDIR}/../vsrc/
+# set TESTDIR ${MYDIR}/../vtests/
+# set XDCDIR ${MYDIR}/../xdc/
+# create_project -force vivado.xpr ${BASEDIR}/vivado -part xc7a35ticpg236-1L
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 2346.250 ; gain = 0.023 ; free physical = 7532 ; free virtual = 15119
+# add_files [glob ${SRCDIR}/*.sv]
+# set_property top top [current_fileset]
+# create_fileset -simset sim_top 
+# add_files -fileset sim_top [glob ${TESTDIR}/top_tb.sv]
+# set_property top top_tb [get_filesets sim_top ]
+# create_fileset -simset sim_spi
+# add_files -fileset sim_spi [glob ${TESTDIR}/spi_tb.sv]
+# set_property top spi_tb [get_filesets sim_spi]
+# create_fileset -simset sim_ctrlr
+# add_files -fileset sim_ctrlr [glob ${TESTDIR}/ctrlr_tb.sv]
+# set_property top ctrlr_tb [get_filesets sim_ctrlr]
+# current_fileset -simset [ get_filesets sim_top]
+# add_files -fileset constrs_1 ${XDCDIR}/Basys3_Master.xdc
+# set_property file_type SystemVerilog [get_files *.sv]
+# set_property -name {xsim.simulate.runtime} -value {1000us} -objects [get_filesets sim_ctrlr]
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 13 16:59:56 2022...
