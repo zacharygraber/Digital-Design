@@ -43,7 +43,7 @@ localparam chip_id = 8'h07;
 // A2A1A0 == 'h4:  set leds[15:8] = din
 
 //states
-enum { ST_BYTE_ONE, ST_WRITE, ST_READ} s, ns;
+enum { ST_BYTE_ONE, ST_WRITE, ST_READ} s, ns; // State and nextState
 //local state
 logic [7:0] op, n_op; 
 logic [15:0] n_leds;
@@ -72,15 +72,34 @@ always_comb begin
 
     case (s) 
         ST_BYTE_ONE: begin
-            ; //fixme
+        // Set next state only if there is new data
+            if (new_data) begin
+                // set "n_op" (the register)
+                n_op = {5'b00000, din[2:0]};
+                
+                // Determine read or write (set ns)
+                if (din[7] == 1) ns = ST_READ;
+                else ns = ST_WRITE;
+            end
         end
 
         ST_READ:  begin
-            ; //fixme
+            case (op) 
+                'h0: n_dout = chip_id;
+                'h1: n_dout = switches[7:0];
+                'h2: n_dout = switches[15:8];
+                'h3: n_dout = leds[7:0];
+                'h4: n_dout = leds[15:8];
+            endcase
+            ns = ST_BYTE_ONE;
         end
 
         ST_WRITE: begin
-            ; //fixme
+            case (op) 
+                'h3: n_leds = {leds[15:8], din};
+                'h4: n_leds = {din, leds[7:0]};
+            endcase
+            ns = ST_BYTE_ONE;
         end
 
     endcase 

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Apr 13 16:59:37 2022
+# Process ID: 178342
+# Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI
+# Command line: vivado -mode batch -source tcl/setup.tcl
+# Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado.log
+# Journal file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado.jou
+#-----------------------------------------------------------
+source tcl/setup.tcl
