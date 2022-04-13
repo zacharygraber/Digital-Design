@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Wed Apr  6 19:09:59 2022" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Wed Apr 13 16:42:35 2022" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3064766" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "86f0bc46-dcdd-4769-a271-9d5388a686fe" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "08c8b7ed81574c27b82efa88a42b1ebd" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "90" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "108" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 20.04.4 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz" -context "user_environment"
@@ -34,10 +34,10 @@ webtalk_add_data -client xsim -key Debug -value "typical" -context "xsim\\comman
 webtalk_add_data -client xsim -key Simulation_Image_Code -value "39 KB" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Simulation_Image_Data -value "4 KB" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Total_Processes -value "26" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Total_Processes -value "24" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "3" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip unimacro_ver unisims_ver " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "1.02_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "270512_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1291161025 -regid "207618128_1777510348_210665627_004" -xml /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "0.96_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "270584_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 3696413453 -regid "207618128_1777510348_210665627_004" -xml /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/xsim.dir/ElevCtrl_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

@@ -3,8 +3,8 @@
 Nov 18 2020
 09:20:35
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.sim/sim_1/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
-/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl.sv,1649286565,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,,ElevCtrl,,uvm,,,,,,
-/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,1649283309,systemVerilog,,,,ElevCtrl_tb,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl.sv,1649882526,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,,ElevCtrl,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,1649882548,systemVerilog,,,,ElevCtrl_tb,,uvm,,,,,,
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay.sv,1648677203,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay_tb.sv,,SevSegDisplay,,uvm,,,,,,
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SevSegDisplay_tb.sv,1648675432,systemVerilog,,,,SevSegDisplay_tb,,uvm,,,,,,
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/SlowClk.sv,1649274470,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project8/Project8.srcs/sources_1/new/ElevCtrl_tb.sv,,SlowClk,,uvm,,,,,,

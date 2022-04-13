@@ -9,29 +9,17 @@ module ElevCtrl(
     output logic       door
 );
 
-    enum {ONE, TWO, THREE, FOUR, ONE_MOVE, TWO_MOVE, THREE_MOVE, FOUR_MOVE} state, nextState, target;
-    
-    always_latch begin
-        if ((state == ONE) || (state == TWO) || (state == THREE) || (state == FOUR)) begin
-            case(floorBtn)
-                4'b1000: target = FOUR;
-                4'b0100: target = THREE;
-                4'b0010: target = TWO;
-                4'b0001: target = ONE;
-            endcase
-        end
-        if (rst == 1'b1) begin
-            target = ONE;
-        end
-    end
+    enum {ONE, TWO, THREE, FOUR, ONE_MOVE, TWO_MOVE, THREE_MOVE, FOUR_MOVE} state, nextState, target, nextTarget;
     
     always_ff @(posedge clk) begin
         //reset is the only if() case we suggest in always_ff
         if (rst) begin
             state <= ONE;  //add a reset case
+            target <= ONE;
         end
         else begin
             state <= nextState;
+            target <= nextTarget;
         end
     end
     
@@ -41,10 +29,21 @@ module ElevCtrl(
         nextState = ONE;
         door = 1'b1;
         
+        nextTarget = target;
+        if ((state == ONE) || (state == TWO) || (state == THREE) || (state == FOUR)) begin
+            case(floorBtn)
+                4'b1000: nextTarget = FOUR;
+                4'b0100: nextTarget = THREE;
+                4'b0010: nextTarget = TWO;
+                4'b0001: nextTarget = ONE;
+                default: nextTarget = target;
+            endcase
+        end
+        
         case(state)
             ONE: begin
                 // Determine next state
-                if (target != ONE) begin
+                if (nextTarget != ONE) begin
                     nextState = ONE_MOVE;
                 end
                 else begin
@@ -56,7 +55,7 @@ module ElevCtrl(
                 floorSel = 2'b00;
             end
             TWO: begin
-                if (target != TWO) begin
+                if (nextTarget != TWO) begin
                     nextState = TWO_MOVE;
                 end
                 else begin
@@ -66,7 +65,7 @@ module ElevCtrl(
                 floorSel = 2'b01;
             end
             THREE: begin
-                if (target != THREE) begin
+                if (nextTarget != THREE) begin
                     nextState = THREE_MOVE;
                 end
                 else begin
@@ -76,7 +75,7 @@ module ElevCtrl(
                 floorSel = 2'b10;
             end
             FOUR: begin
-                if (target != FOUR) begin
+                if (nextTarget != FOUR) begin
                     nextState = FOUR_MOVE;
                 end
                 else nextState = FOUR;
@@ -84,27 +83,27 @@ module ElevCtrl(
                 floorSel = 2'b11;
             end
             ONE_MOVE: begin
-                if (target == ONE) nextState = ONE;
+                if (nextTarget == ONE) nextState = ONE;
                 else nextState = TWO_MOVE;
                 door = 1'b0;
                 floorSel = 2'b00;
             end
             TWO_MOVE: begin
-                if (target == TWO) nextState = TWO;
-                else if ((target == THREE) || (target == FOUR)) nextState = THREE_MOVE;
+                if (nextTarget == TWO) nextState = TWO;
+                else if ((nextTarget == THREE) || (nextTarget == FOUR)) nextState = THREE_MOVE;
                 else nextState = ONE_MOVE;
                 door = 1'b0;
                 floorSel = 2'b01;
             end
             THREE_MOVE: begin
-                if (target == THREE) nextState = THREE;
-                else if ((target == ONE) || (target == TWO)) nextState = TWO_MOVE;
+                if (nextTarget == THREE) nextState = THREE;
+                else if ((nextTarget == ONE) || (nextTarget == TWO)) nextState = TWO_MOVE;
                 else nextState = FOUR_MOVE;
                 door = 1'b0;
                 floorSel = 2'b10;
             end
             FOUR_MOVE: begin
-                if (target == FOUR) nextState = FOUR;
+                if (nextTarget == FOUR) nextState = FOUR;
                 else nextState = THREE_MOVE;
                 door = 1'b0;
                 floorSel = 2'b11;
