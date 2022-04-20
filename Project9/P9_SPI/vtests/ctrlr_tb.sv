@@ -101,6 +101,7 @@ endtask: test_leds
 initial begin
     
     initialize();
+    //$monitor("clk: %b, din: %b, dout: %b", clk, din, dout);
 
     repeat(10) @(posedge clk) #2;
     rst = 'h0;

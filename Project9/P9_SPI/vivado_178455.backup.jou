@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Apr 13 17:00:27 2022
+# Process ID: 178455
+# Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI
+# Command line: vivado vivado/vivado.xpr
+# Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado.log
+# Journal file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project vivado/vivado.xpr
+update_compile_order -fileset sources_1
+current_fileset -simset [ get_filesets sim_ctrlr ]
+launch_simulation -simset [get_filesets sim_ctrlr ]
+source ctrlr_tb.tcl
+add_bp {/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/ctrlr.sv} 87
+add_bp {/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/ctrlr.sv} 73
+close_sim
+launch_simulation -simset [get_filesets sim_ctrlr ]
+launch_simulation -simset [get_filesets sim_ctrlr ]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top top [get_filesets sim_ctrlr]
+set_property top_lib xil_defaultlib [get_filesets sim_ctrlr]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_ctrlr
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top ctrlr_tb [get_filesets sim_ctrlr]
+set_property top_lib xil_defaultlib [get_filesets sim_ctrlr]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_ctrlr
+launch_simulation -simset [get_filesets sim_ctrlr ]
+launch_simulation -simset [get_filesets sim_ctrlr ]
+launch_simulation -simset [get_filesets sim_ctrlr ]
+launch_simulation -simset [get_filesets sim_ctrlr ]

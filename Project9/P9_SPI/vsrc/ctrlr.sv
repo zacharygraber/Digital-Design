@@ -54,7 +54,7 @@ always_ff @(posedge clk) begin
         s   <= ST_BYTE_ONE;
         op  <= 8'h0;
         leds <= 'h0;
-        dout <= chip_id;
+        dout <= 'h0;
     end else begin
         s   <= ns;
         op  <= n_op; 
@@ -68,13 +68,13 @@ always_comb begin
     ns = s;
     n_op = op;
     n_leds = leds;
-    n_dout = chip_id; 
+    n_dout = dout; 
 
     case (s) 
         ST_BYTE_ONE: begin
         // Set next state only if there is new data
             if (new_data) begin
-                // set "n_op" (the register)
+                // set "n_op" (the register/instruction)
                 n_op = {5'b00000, din[2:0]};
                 
                 // Determine read or write (set ns)
@@ -91,15 +91,15 @@ always_comb begin
                 'h3: n_dout = leds[7:0];
                 'h4: n_dout = leds[15:8];
             endcase
-            ns = ST_BYTE_ONE;
+            if (new_data == 1) ns = ST_BYTE_ONE;
         end
 
         ST_WRITE: begin
-            case (op) 
-                'h3: n_leds = {leds[15:8], din};
-                'h4: n_leds = {din, leds[7:0]};
-            endcase
-            ns = ST_BYTE_ONE;
+                case (op) 
+                    'h3: n_leds = {leds[15:8], din};
+                    'h4: n_leds = {din, leds[7:0]};
+                endcase
+                if (new_data == 1) ns = ST_BYTE_ONE;
         end
 
     endcase 

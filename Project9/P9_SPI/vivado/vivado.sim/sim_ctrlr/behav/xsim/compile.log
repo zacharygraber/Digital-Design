@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/ctrlr.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ctrlr
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/ctrlr_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ctrlr_tb
