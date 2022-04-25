@@ -111,3 +111,4 @@ close_sim
 launch_simulation -simset [get_filesets sim_ctrlr ]
 source ctrlr_tb.tcl
 current_fileset -simset [ get_filesets sim_spi ]
+close_sim

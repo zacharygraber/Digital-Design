@@ -2907,3 +2907,7 @@ INFO: [USF-XSim-96] XSim completed. Design snapshot 'ctrlr_tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000us
 launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 8327.059 ; gain = 13.008 ; free physical = 9871 ; free virtual = 14749
 current_fileset -simset [ get_filesets sim_spi ]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 20 18:28:21 2022...

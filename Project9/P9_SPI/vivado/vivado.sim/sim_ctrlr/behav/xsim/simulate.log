@@ -1,0 +1,8 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Checking chip_id
+Checking chip_id
+Checking switches
+Checking LEDs
+@@@Passed
+$finish called at time : 1192 ns : File "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/ctrlr_tb.sv" Line 116
