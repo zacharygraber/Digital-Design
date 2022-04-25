@@ -1,0 +1,63 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Apr 25 10:30:51 2022
+# Process ID: 75422
+# Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado
+# Command line: vivado vivado.xpr
+# Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.log
+# Journal file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project vivado.xpr
+WARNING: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/l/Xilinx_Vivado_SDK_Web_2020.2_1118_1232/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 7195.738 ; gain = 56.098 ; free physical = 9610 ; free virtual = 15251
+INFO: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+update_compile_order -fileset sources_1
+launch_simulation -simset [get_filesets sim_spi ]
+Command: launch_simulation -simset sim_spi
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_spi'
+INFO: [SIM-utils-54] Inspecting design source files for 'spi_tb' in fileset 'sim_spi'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_spi'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim'
+xvlog --incr --relax -L uvm -prj spi_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module spi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module spi_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim'
+xelab -wto 939e26257c434575b16a4fe773e6f04e --incr --debug typical --relax --mt 8 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot spi_tb_behav xil_defaultlib.spi_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /l/Xilinx_Vivado_SDK_Web_2020.2_1118_1232/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 939e26257c434575b16a4fe773e6f04e --incr --debug typical --relax --mt 8 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot spi_tb_behav xil_defaultlib.spi_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-3818] variable 'next_state' is driven by invalid combination of procedural drivers [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:19]
+WARNING: [VRFC 10-2921] 'next_state' driven by this always_ff block should not be driven by any other process [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:35]
+ERROR: [VRFC 10-3818] variable 'done' is driven by invalid combination of procedural drivers [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:16]
+WARNING: [VRFC 10-2921] 'next_state' driven by this always_ff block should not be driven by any other process [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:64]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 7312.938 ; gain = 0.000 ; free physical = 9440 ; free virtual = 15167
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 25 11:18:06 2022...
