@@ -4,8 +4,11 @@ Running: /l/Xilinx_Vivado_SDK_Web_2020.2_1118_1232/Vivado/2020.2/bin/unwrapped/l
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-ERROR: [VRFC 10-3818] variable 'next_state' is driven by invalid combination of procedural drivers [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:19]
-WARNING: [VRFC 10-2921] 'next_state' driven by this always_ff block should not be driven by any other process [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:35]
-ERROR: [VRFC 10-3818] variable 'done' is driven by invalid combination of procedural drivers [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:16]
-WARNING: [VRFC 10-2921] 'next_state' driven by this always_ff block should not be driven by any other process [/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv:64]
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.spi
+Compiling module xil_defaultlib.spi_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot spi_tb_behav

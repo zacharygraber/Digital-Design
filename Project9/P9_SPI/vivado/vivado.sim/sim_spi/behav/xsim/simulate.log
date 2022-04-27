@@ -1,0 +1,9 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+@slave:  setting byte: 00
+SPI Send:  aa
+SPI Recv:  00
+@slave: checking byte: aa
+Fatal: BAD byte: 2a
+Time: 9691 ns  Iteration: 0  Process: /spi_tb/checkByte  Scope: spi_tb.checkByte  File: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv Line: 75
+$finish called at time : 9691 ns : File "/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv" Line 75

@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Apr 25 10:30:51 2022
-# Process ID: 75422
+# Start of session at: Wed Apr 27 16:35:12 2022
+# Process ID: 103808
 # Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado
 # Command line: vivado vivado.xpr
 # Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.log
@@ -13,3 +13,132 @@ start_gui
 open_project vivado.xpr
 update_compile_order -fileset sources_1
 launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+current_wave_config {Untitled 17}
+add_wave {{/spi_tb/DUT}} 
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {}
+add_wave {{/spi_tb/DUT}} 
+run all
+run all
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+run all
+current_wave_config {Untitled 19}
+add_wave {{/spi_tb/DUT}} 
+run all
+run all
+relaunch_sim
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 20}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 21}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 22}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 23}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 24}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim
+launch_simulation -simset [get_filesets sim_spi ]
+source spi_tb.tcl
+current_wave_config {Untitled 25}
+add_wave {{/spi_tb/DUT}} 
+run all
+close_sim

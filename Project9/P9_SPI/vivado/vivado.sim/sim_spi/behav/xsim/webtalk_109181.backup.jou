@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Apr 27 17:18:46 2022
+# Process ID: 109181
+# Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim
+# Command line: wbtcv -mode batch -source /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/xsim.dir/spi_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/webtalk.log
+# Journal file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/xsim.dir/spi_tb_behav/webtalk/xsim_webtalk.tcl -notrace

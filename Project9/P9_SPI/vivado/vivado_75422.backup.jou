@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Apr 25 10:30:51 2022
+# Process ID: 75422
+# Current directory: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado
+# Command line: vivado vivado.xpr
+# Log file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.log
+# Journal file: /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project vivado.xpr
+update_compile_order -fileset sources_1
+launch_simulation -simset [get_filesets sim_spi ]

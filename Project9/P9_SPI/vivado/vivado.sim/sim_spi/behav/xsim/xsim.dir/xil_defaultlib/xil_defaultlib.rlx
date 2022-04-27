@@ -3,5 +3,5 @@
 Nov 18 2020
 09:20:35
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vivado/vivado.sim/sim_spi/behav/xsim/glbl.v,1605673889,verilog,,,,glbl,,uvm,,,,,,
-/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv,1650899026,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv,,spi,,uvm,,,,,,
+/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vsrc/spi.sv,1651102317,systemVerilog,,/nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv,,spi,,uvm,,,,,,
 /nfs/nfs7/home/zegraber/Documents/CPS-Digital-Design/Project9/P9_SPI/vtests/spi_tb.sv,1649883490,systemVerilog,,,,spi_tb,,uvm,,,,,,
