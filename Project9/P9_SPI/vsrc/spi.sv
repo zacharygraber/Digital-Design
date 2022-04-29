@@ -16,12 +16,18 @@ module spi(
     output logic        done //logical 1 for 1 cycle indicating new data 
 );
     
-    enum {RX_BYTE_1, RX_BYTE_2, TX_BYTE, DONE} state, next_state, prev_state;
-    enum {READ, WRITE} op, next_op;
-    logic [3:0] _counter;
+    logic [2:0] _rx_counter;
+    logic [2:0] _tx_counter;
     
     logic rst_; //local reset
     logic next_miso;
+    logic prev_sck;
+    
+    logic rising;
+    logic falling;
+    
+    assign rising = ~prev_sck && sck;
+    assign falling = prev_sck && ~sck;
 
 
     //combine the chip and SPI resets 
@@ -33,54 +39,35 @@ module spi(
 
     always_ff @(posedge clk) begin
         if (rst_) begin
-            state <= RX_BYTE_1;
-            _counter <= 'h7;
-            op <= READ;
             done <= 1'h0;
-            next_miso <= 1'b0;    
-       end 
-       else begin
-            prev_state <= state;
-            state <= next_state;
-            op <= next_op;
-            case (state)
-                RX_BYTE_1: begin
-                    done <= 1'b0;
-                    din[_counter] <= mosi;
-                    if (_counter == 'h7) begin
-                        if (mosi == 1) next_op <= READ;
-                        else next_op <= WRITE;
-                    end
-                    if (_counter == 'h0) next_state <= DONE;
-                    else _counter <= (_counter - 1);
-                end
-                
-                DONE: begin
-                    done <= 1'b1;
-                    _counter <= 'h7;
-                    case (prev_state)
-                        RX_BYTE_1: begin
-                            next_state <= RX_BYTE_2;
-                        end
-                        
-                        RX_BYTE_2: begin
-                            if (op == READ) begin
-                                next_state <= TX_BYTE;
-                            end
-                            else begin // op is WRITE
-                                next_state <= RX_BYTE_1;
-                            end
-                        end
-                    endcase
-                end
-                
-                RX_BYTE_2: begin
-                    done <= 1'b0;
-                    din[_counter] <= mosi;
-                    if (_counter == 'h0) next_state <= DONE;
-                    else _counter <= (_counter - 1);
-                end
-            endcase
-       end
+         end 
+//        else begin
+            
+//            if (_rx_counter == 0) next_done <= 1;
+//            else next_done <= 0;
+//        end
+    end
+        
+    assign next_miso = dout[_tx_counter];
+    
+    always_comb begin
+        if (rst_) begin 
+            prev_sck = 0;
+            _rx_counter = 'h7;
+            _tx_counter = 'h7;
+        end
+        else prev_sck = ~sck;
+        
+        din[_rx_counter] = mosi;
+        
+        // Rising edge
+        if (rising) begin
+            _rx_counter = _rx_counter - 1;
+        end
+        
+        // Falling edge
+        else if (falling) begin
+            _tx_counter = _tx_counter - 1;
+        end
     end
 endmodule
