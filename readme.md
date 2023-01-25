@@ -1,6 +1,7 @@
-## Griffin Peters and Zach Graber
-### Serial #999491
+## Digital Design and FPGAs
+### Indiana University
+### Spring 2022
 
-| Date    | Time  | Contributor | Accomplishment |
-| ------- | -------- | -------------- | --------------------------------|
-| 1/12/22 | 4:58 PM | Zach Graber | Completed P0 Project Document |
+During the first half of this class, I had the opportunity to work on implementations of various serial communication protocols like SPI, UART, and I2C.
+
+The second half focused on FPGA design using SystemVerilog, implementing some small "toy" projects and culminating in a fully SPI-compliant peripheral running on a Basys3 board.
