@@ -1,4 +1,4 @@
-### Digital Design and FPGAs
+### Cyber-Physical Systems, Digital Design, and FPGAs
 ##### Indiana University
 ##### Spring 2022
 
